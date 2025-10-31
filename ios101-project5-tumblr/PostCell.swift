@@ -8,16 +8,26 @@
 import UIKit
 
 class PostCell: UITableViewCell {
+    @IBOutlet weak var postImageView: UIImageView!
+    @IBOutlet weak var summaryLabel: UILabel!
 
     override func awakeFromNib() {
         super.awakeFromNib()
-        // Initialization code
+        postImageView.contentMode = .scaleAspectFill
+        postImageView.clipsToBounds = true
+        summaryLabel.numberOfLines = 0
     }
 
-    override func setSelected(_ selected: Bool, animated: Bool) {
-        super.setSelected(selected, animated: animated)
-
-        // Configure the view for the selected state
+//    override func setSelected(_ selected: Bool, animated: Bool) {
+//        super.setSelected(selected, animated: animated)
+//
+//        // Configure the view for the selected state
+//    }
+    
+    override func prepareForReuse() {
+        super.prepareForReuse()
+        postImageView.image = nil
+        summaryLabel.text = nil
     }
 
 }
